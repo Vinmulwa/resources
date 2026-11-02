@@ -1,4 +1,4 @@
-:root {
+.root {
   --navy: #071d3d;
   --blue: #0756b8;
   --blue-2: #1677d2;
@@ -47,8 +47,8 @@ h1 .accent { color:var(--yellow); }
 .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
 .pill { border:1px solid rgba(255,255,255,.25); border-radius:99px; padding:7px 13px; color:#e8f1fc; font-size:.78rem; }
 .hero-photo-wrap { position:relative; max-width:440px; justify-self:end; }
-.hero-photo { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:58% 45%; border-radius:20px; border:7px solid rgba(255,255,255,.12); box-shadow:0 25px 70px rgba(0,0,0,.18); }
-.photo-caption { position:absolute; left:-28px; bottom:22px; max-width:235px; background:var(--yellow); color:var(--navy); padding:14px 17px; border-radius:10px; font-size:.85rem; line-height:1.4; box-shadow:0 16px 30px rgba(7,29,61,.15); }
+.hero-photo { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:58% 45%; border-radius:20px; border:7px solid rgba(255,255,255,.12); box-shadow:0 25px 70px rgba(0,0,0,.2); }
+.photo-caption { position:absolute; left:-28px; bottom:22px; max-width:235px; background:var(--yellow); color:var(--navy); padding:14px 17px; border-radius:10px; font-size:.85rem; line-height:1.4; box-shadow:0 12px 24px rgba(7,29,61,.14); }
 .cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:26px; }
 .primary-btn, .secondary-btn {
   display:inline-flex; align-items:center; justify-content:center; text-decoration:none; border-radius:999px; padding:13px 20px; font-weight:700; transition:transform .2s ease, box-shadow .2s ease;
@@ -235,11 +235,113 @@ p { margin:0 0 15px; }
 .timeline-copy h3 { margin:0 0 8px; color:var(--navy); font-size:1.15rem; }
 .timeline-copy p { margin:0 0 10px; }
 .mini-card { min-height: 100%; }
+
+.cv-body {
+  background: linear-gradient(180deg, #f3f7fd 0%, #eff3f8 100%);
+  color: var(--ink);
+}
+.cv-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 42px 24px 80px;
+}
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px 26px;
+  margin-bottom: 24px;
+  box-shadow: 0 12px 28px rgba(8,31,65,.04);
+}
+.cv-kicker {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.cv-header h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  color: var(--navy);
+}
+.cv-contact {
+  text-align: right;
+  font-size: .96rem;
+}
+.cv-contact p {
+  margin: 0;
+}
+.cv-section {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px 26px;
+  margin-bottom: 24px;
+  box-shadow: 0 12px 28px rgba(8,31,65,.04);
+}
+.cv-section h2 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-size: 1.45rem;
+}
+.cv-section ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.cv-section li {
+  margin: 8px 0;
+}
+.cv-two-col {
+  display: block;
+}
+.cv-two-col .cv-section {
+  margin-bottom: 24px;
+}
+.cv-job {
+  border-top: 1px solid #edf2f8;
+  padding-top: 18px;
+  margin-top: 18px;
+}
+.cv-job:first-of-type {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+.cv-job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 6px;
+  font-size: 1.02rem;
+}
+.cv-job-head strong {
+  color: var(--navy);
+}
+.cv-job-head span,
+.cv-job-meta {
+  color: var(--blue);
+  font-weight: 700;
+}
+.cv-job ul {
+  margin-top: 10px;
+}
+
 @media (max-width:980px) {
   .about-grid { grid-template-columns:1fr; }
   .about-hero { grid-template-columns:1fr; }
   .about-photo-card { justify-items:start; }
   .photo-frame { max-width: 420px; }
+  .cv-header { flex-direction: column; align-items: flex-start; }
+  .cv-contact { text-align: left; }
 }
 @media (max-width:850px) {
   .hero-inner { grid-template-columns:1fr; gap:32px; padding-top:52px; }
@@ -268,4 +370,6 @@ p { margin:0 0 15px; }
   .about-page { padding: 36px 18px 60px; }
   .about-hero { padding: 28px 20px; }
   .section-heading h2 { font-size:1.35rem; }
+  .cv-page { padding: 32px 18px 60px; }
+  .cv-section, .cv-header { padding: 20px; }
 }
