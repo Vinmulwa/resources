@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Vincent Mulwa — Applied Physicist and Technical Systems Leader.">
+  <title>About | Vincent Mulwa</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5d687b;
+      --accent: #155eef;
+      --line: #e5eaf1;
+      --surface: #f6f8fb;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .page {
+      width: min(900px, calc(100% - 36px));
+      margin: 48px auto;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(20, 35, 60, .06);
+    }
+    header {
+      padding: 58px 64px 48px;
+      background: #101f3d;
+      color: var(--white);
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: clamp(2.1rem, 5vw, 3.1rem);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+    .role {
+      margin: 0 0 20px;
+      color: #b9d0ff;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .contact {
+      margin: 0;
+      color: #d5deed;
+      font-size: .95rem;
+    }
+    main { padding: 12px 64px 56px; }
+    section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-child { border-bottom: 0; }
+    h2 {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: .86rem;
+      line-height: 1.3;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h3 {
+      margin: 0 0 4px;
+      font-size: 1.08rem;
+      line-height: 1.45;
+    }
+    p { margin: 0 0 12px; }
+    .intro { font-size: 1.05rem; color: #344054; }
+    .entry { margin: 0 0 25px; }
+    .entry:last-child { margin-bottom: 0; }
+    .meta {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 600;
+    }
+    ul {
+      margin: 9px 0 0;
+      padding-left: 21px;
+    }
+    li { margin: 0 0 8px; padding-left: 3px; }
+    li::marker { color: var(--accent); }
+    .plain-list { list-style: none; padding: 0; }
+    .plain-list li { margin-bottom: 9px; }
+    .plain-list strong { color: #26344d; }
+    .footer {
+      padding: 22px 64px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    @media (max-width: 640px) {
+      .page { width: 100%; margin: 0; border: 0; border-radius: 0; }
+      header { padding: 42px 25px 34px; }
+      main { padding: 4px 25px 38px; }
+      section { padding: 28px 0; }
+      .footer { padding: 20px 25px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; border: 0; box-shadow: none; }
+      header { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Vincent Mulwa</h1>
+      <p class="role">Applied Physicist | Technical Systems Leader</p>
+      <p class="contact">Nairobi, Kenya &nbsp;·&nbsp; +254 707 598 xxx &nbsp;·&nbsp; mulwamutukuu@gmail.com</p>
+    </header>
+
+    <main>
+      <section id="profile">
+        <h2>Professional Profile</h2>
+        <p class="intro">Applied Physicist and technical systems leader with 8+ years of experience across battery systems, electric mobility, electronics, laboratory systems and renewable energy. Experienced in leading technical teams, managing complex operational systems, improving reliability and translating technical performance into measurable business outcomes. Strongly adaptable across technologies, with hands-on capability in diagnostics, testing, troubleshooting, data analysis and technical problem-solving.</p>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <ul class="plain-list">
+          <li><strong>MSc Physics (Nuclear &amp; Radiation Physics)</strong><br>South Eastern Kenya University, 2023</li>
+          <li><strong>BSc Physics (Electronics Major), First Class Honours</strong><br>Chuka University, 2016</li>
+          <li><strong>Secondary Education (B+), KCSE</strong><br>Kikelenzu Secondary School — Top Physics Student in Kenya, 2011</li>
+          <li><strong>Primary Education (B), KCPE</strong><br>Kyaitha Primary School, 2007</li>
+        </ul>
+      </section>
+
+      <section id="professional-development">
+        <h2>Professional Development</h2>
+        <ul>
+          <li>BYD Lithium Battery Training — 2023</li>
+          <li>Strathmore E-Mobility Training — 2024</li>
+          <li>AMI Management Training — 2024</li>
+          <li>Microcontroller Programming — 2018</li>
+          <li>Lean Six Sigma White Belt — 2023</li>
+          <li>Fire Marshal Training — 2023</li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h2>Professional Experience</h2>
+
+        <div class="entry">
+          <h3>Technical Lead — OhmLight Solutions</h3>
+          <p class="meta">2025–Present</p>
+          <p>Technical venture focused on battery and energy systems.</p>
+          <ul>
+            <li>Lead battery testing, troubleshooting, installation, maintenance and solar energy projects.</li>
+            <li>Manage technical delivery, customer requirements, procurement and field operations.</li>
+            <li>Built a revenue-generating operation with technicians capable of running day-to-day workshop activities independently.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Battery Manager — Electric Mobility | Ampersand Energy Kenya</h3>
+          <p class="meta">2022–2025</p>
+          <p>Led battery technical operations supporting a rapidly scaling electric-motorcycle fleet.</p>
+          <ul>
+            <li>Led a 12-person technical team, setting targets, training, evaluating performance and coordinating daily delivery; directly supported over 25 vehicle technicians.</li>
+            <li>Managed battery testing, validation, maintenance, workshop operations and lifecycle activities for 3,000+ batteries supporting 2,000+ electric motorcycles and 25+ swap stations.</li>
+            <li>Established a battery health testing and calibration capability and developed technical procedures and QA processes.</li>
+            <li>Reduced average batteries out of service from approximately 6% to below 3% through improved monitoring, workload visibility and proactive intervention.</li>
+            <li>Developed real-time operational dashboards to track battery status, workshop backlog and technician productivity, enabling earlier identification of fleet reliability risks.</li>
+            <li>Supported technical decisions involving hiring, budget, KPIs, OKRs, procurement, inventory, OPEX and CAPEX, while reporting operational performance and risks to senior management.</li>
+            <li>Led implementation of a local Battery IoT solution, resulting in a 75% cost reduction.</li>
+            <li>Provided technical product training across departments and supported engineering investigations involving batteries and vehicles, fleet reliability and swap-station performance.</li>
+            <li>Monitored and optimized 11 solar charging plants and used machine learning, Python and Excel for operational and customer-behaviour analysis.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Technologist of Physics — South Eastern Kenya University</h3>
+          <p class="meta">2018–2022</p>
+          <ul>
+            <li>Managed physics and electronics laboratory operations, equipment maintenance, troubleshooting, inventory and technical support.</li>
+            <li>Trained students in practical electronics and supported research activities.</li>
+            <li>Established a radiation physics research unit and developed a remote-controlled digital electronics laboratory trainer.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Solar Energy Systems Intern — Plexus</h3>
+          <p class="meta">2017</p>
+          <ul><li>Solar energy systems installation and maintenance.</li></ul>
+        </div>
+
+        <div class="entry">
+          <h3>Biomedical Engineering Attaché — Chuka Referral Hospital</h3>
+          <p class="meta">2015</p>
+          <ul><li>Biomedical engineering systems and equipment installation and maintenance.</li></ul>
+        </div>
+      </section>
+
+      <section id="engagement">
+        <h2>Professional Engagement</h2>
+        <ul>
+          <li>Technical Committee Member — KEBS TC199 (Electric Mobility)</li>
+          <li>Technical Committee Member — KEBS TC091 (Electrical Installations and Distribution Systems)</li>
+          <li>Member — Electric Mobility Association of Kenya (EMAK)</li>
+          <li>Technical Lead — Kenya Electric Mobility Technical Group (KEMTG)</li>
+        </ul>
+      </section>
+
+      <section id="expertise">
+        <h2>Expertise</h2>
+        <ul>
+          <li>Technical leadership, team management and team capacity building</li>
+          <li>Scientific research: experiment design, execution and reporting</li>
+          <li>Battery lifecycle management for sustainable transport and energy storage systems</li>
+          <li>Data-driven strategies for continuous product improvement</li>
+          <li>Productivity management and operations optimization</li>
+        </ul>
+      </section>
+
+      <section id="recent-work">
+        <h2>Recent Technical Execution</h2>
+        <ul>
+          <li><strong>June 2026:</strong> Testing and commissioning of electric three-wheelers for farm operations — Machakos Region.</li>
+          <li><strong>April 2026:</strong> Rivian fleet service technical support — Nairobi and Chyulu Region.</li>
+          <li><strong>March 2026:</strong> Sensor and DAQ instrumentation on EV and ICE motorcycles for Road and Load Data Acquisition (RLDA) testing — Nairobi, Coast and Rift Valley regions.</li>
+          <li><strong>January 2026:</strong> DAQ instrumentation on EV and ICE motorcycles for Real User Profile Analysis (RUPA) testing — Nairobi Region.</li>
+          <li><strong>November 2025:</strong> DAQ instrumentation on ICE motorcycles for Real User Profile Analysis (RUPA) testing — Eastern Region.</li>
+        </ul>
+      </section>
+
+      <section id="hobbies">
+        <h2>Hobbies</h2>
+        <ul>
+          <li>High-speed driving</li>
+          <li>Tinkering with electronic devices, batteries, algorithms and automation</li>
+        </ul>
+      </section>
+
+      <section id="references">
+        <h2>References</h2>
+        <p>Available upon request.</p>
+      </section>
+    </main>
+
+    <div class="footer">Vincent Mulwa · Applied Physicist | Technical Systems Leader</div>
+  </div>
+</body>
+</html>
