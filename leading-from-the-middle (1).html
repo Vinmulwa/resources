@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leading from the Middle</title>
+<meta name="description" content="A practical field guide for mid-level managers: strategic leadership, stakeholder management and navigating organisational dynamics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14211f;
+  --ink-soft:#44544f;
+  --paper:#fbf8f2;
+  --card:#ffffff;
+  --line:#e6dfd2;
+  --teal:#0f5c58;
+  --teal-2:#167a73;
+  --teal-3:#d9efec;
+  --amber:#e8923a;
+  --amber-2:#fbe6cc;
+  --coral:#d9573f;
+  --night:#0b2a2b;
+  --radius:20px;
+  --shadow:0 1px 2px rgba(20,33,31,.06),0 12px 32px -12px rgba(20,33,31,.18);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.15;margin:0;letter-spacing:-.01em}
+p{margin:0 0 1em}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+
+/* progress + nav */
+#progress{position:fixed;inset:0 auto auto 0;height:4px;width:0;background:linear-gradient(90deg,var(--amber),var(--coral));z-index:100;transition:width .1s}
+nav.top{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-family:var(--serif);font-weight:800;font-size:1.1rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px var(--amber-2)}
+nav.top ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto}
+nav.top a.l{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:500;color:var(--ink-soft);white-space:nowrap;transition:.2s}
+nav.top a.l:hover{background:var(--teal-3);color:var(--teal)}
+nav.top a.l.active{background:var(--teal);color:#fff}
+
+/* hero */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--night)}
+.hero-art{position:relative;width:100%;aspect-ratio:21/9;min-height:420px;max-height:640px}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,42,43,.15) 0%,rgba(11,42,43,.05) 40%,rgba(11,42,43,.75) 100%)}
+.hero-copy{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:clamp(28px,5vw,64px)}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-2);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px);margin-bottom:18px}
+.hero h1{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:800;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.hero h1 em{font-style:italic;color:var(--amber);font-weight:700}
+.hero p.sub{max-width:640px;font-size:clamp(1rem,1.6vw,1.2rem);margin:16px 0 26px;color:#e8f3f1}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s}
+.btn.primary{background:var(--amber);color:#2a1700;box-shadow:0 8px 24px -8px rgba(232,146,58,.7)}
+.btn.primary:hover{transform:translateY(-2px);background:#f3a050}
+.btn.ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+.stats{background:var(--night);color:#cfe3e0}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.stat{padding:22px 20px;border-left:1px solid rgba(255,255,255,.12);display:flex;gap:14px;align-items:center}
+.stat:first-child{border-left:0}
+.stat b{font-family:var(--serif);font-size:2rem;color:var(--amber);line-height:1}
+.stat span{font-size:.9rem;line-height:1.4}
+
+/* sections */
+section{padding:clamp(56px,9vw,110px) 0}
+.kicker{display:flex;align-items:center;gap:12px;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-2);margin-bottom:14px}
+.kicker .n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-family:var(--serif);letter-spacing:0;font-size:1rem}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:18px;max-width:20ch}
+.lead{font-size:1.2rem;color:var(--ink-soft);max-width:68ch}
+.alt{background:linear-gradient(180deg,#f2ede2,#f7f2e8)}
+.dark{background:var(--night);color:#e6f1ef}
+.dark .lead,.dark p{color:#c3d8d5}
+.dark .kicker{color:var(--amber)}
+.dark .kicker .n{background:var(--amber);color:#2a1700}
+
+.grid{display:grid;gap:22px;margin-top:40px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(20,33,31,.06),0 22px 44px -16px rgba(20,33,31,.25)}
+.card h3{font-size:1.35rem;margin:14px 0 10px}
+.card p{color:var(--ink-soft);margin:0;font-size:.98rem}
+.icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;background:var(--teal-3)}
+.icon.a{background:var(--amber-2)}
+.icon.c{background:#fbddd6}
+
+/* pillars */
+.pillar{position:relative;overflow:hidden}
+.pillar::before{content:attr(data-n);position:absolute;right:-6px;top:-22px;font-family:var(--serif);font-size:7.5rem;font-weight:800;color:var(--teal-3);opacity:.6;line-height:1}
+.pillar>*{position:relative}
+.pillar a{display:inline-block;margin-top:16px;font-weight:600;color:var(--teal);text-decoration:none;font-size:.92rem}
+.pillar a:hover{text-decoration:underline}
+
+/* callouts */
+.callout{margin:34px 0 0;padding:26px 30px;border-radius:var(--radius);background:var(--amber-2);border-left:6px solid var(--amber);color:#4a2d09}
+.callout strong{font-family:var(--serif);font-size:1.15rem;display:block;margin-bottom:6px;color:#2a1700}
+.callout p{margin:0;color:#5b3a12}
+.dark .callout{background:rgba(232,146,58,.12);border-color:var(--amber)}
+.dark .callout p,.dark .callout strong{color:#ffe8cc}
+
+h3.sub{font-size:1.7rem;margin:56px 0 10px}
+
+/* question list */
+.qs{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px;counter-reset:q}
+.qs li{counter-increment:q;display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;font-weight:500}
+.qs li::before{content:counter(q);flex:none;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:700;margin-top:1px}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{padding:9px 16px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.9rem;font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.chip.hot{background:var(--coral);border-color:var(--coral);color:#fff}
+.chip.t{background:var(--teal-3);border-color:transparent;color:var(--teal)}
+.measure{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-size:.95rem;font-weight:500}
+.measure b{flex:none;width:10px;height:10px;border-radius:50%;background:var(--amber);margin-top:9px}
+
+/* escalation steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:38px;position:relative}
+.step{position:relative;padding:28px 22px 24px;background:var(--card);border:1px solid var(--line);margin-left:-1px}
+.step:first-child{border-radius:var(--radius) 0 0 var(--radius);margin-left:0}
+.step:last-child{border-radius:0 var(--radius) var(--radius) 0}
+.step .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.step h4{font-size:1.25rem;margin-bottom:8px}
+.step p{font-size:.93rem;color:var(--ink-soft);margin:0}
+.step:nth-child(1){border-top:5px solid var(--teal)}
+.step:nth-child(2){border-top:5px solid var(--teal-2)}
+.step:nth-child(3){border-top:5px solid var(--amber)}
+.step:nth-child(4){border-top:5px solid var(--coral)}
+
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.compare>div{border-radius:var(--radius);padding:28px}
+.compare .bad{background:#fbe9e4;border:1px solid #f1cbc1}
+.compare .good{background:var(--teal-3);border:1px solid #b6dbd6}
+.compare h4{font-size:1.2rem;margin-bottom:10px}
+.compare ul{margin:0;padding-left:20px;color:var(--ink-soft)}
+.compare li{margin:6px 0}
+
+/* diagnosis tiles */
+.diag{border-radius:var(--radius);padding:24px;background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden}
+.diag::after{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c,var(--teal))}
+.diag h4{font-size:1.1rem;margin-bottom:6px}
+.diag p{font-size:.92rem;color:var(--ink-soft);margin:0}
+.diag .r{margin-top:12px;font-size:.85rem;font-weight:600;color:var(--c,var(--teal))}
+
+/* triad */
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.triad .t{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:30px;backdrop-filter:blur(4px)}
+.triad .t h3{color:#fff;font-size:1.6rem}
+.triad .t .q{display:block;margin:6px 0 14px;color:var(--amber);font-weight:600;font-size:.95rem}
+.triad .t p{margin:0;font-size:.95rem}
+.gap-note{margin-top:30px;padding:24px 28px;border-radius:var(--radius);border:1px dashed rgba(255,255,255,.35);font-size:1.02rem;color:#dbeae8}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px;counter-reset:f}
+.flow>div{counter-increment:f;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 20px 22px}
+.flow>div::before{content:counter(f);position:absolute;top:-16px;left:20px;width:32px;height:32px;border-radius:50%;background:var(--amber);color:#2a1700;font-weight:700;display:grid;place-items:center;font-family:var(--serif)}
+.flow>div:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-50%);z-index:2;width:22px;height:22px;display:grid;place-items:center;background:var(--paper);border-radius:50%;color:var(--teal);font-weight:700;font-size:.9rem}
+.flow h4{font-size:1.1rem;margin-bottom:6px}
+.flow p{font-size:.9rem;color:var(--ink-soft);margin:0}
+.lens{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.lens .card{border-top:5px solid var(--teal)}
+.lens .card:nth-child(2){border-top-color:var(--amber)}
+.lens .card:nth-child(3){border-top-color:var(--coral)}
+
+/* checklist */
+.check{display:grid;gap:16px;margin-top:38px}
+.ci{background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius);padding:22px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;cursor:pointer;transition:.25s}
+.ci:hover{border-color:var(--teal-2)}
+.ci input{appearance:none;width:30px;height:30px;border-radius:9px;border:2px solid var(--teal-2);background:#fff;cursor:pointer;margin-top:4px;display:grid;place-items:center;transition:.2s}
+.ci input::after{content:"✓";color:#fff;font-weight:700;transform:scale(0);transition:.2s}
+.ci input:checked{background:var(--teal)}
+.ci input:checked::after{transform:scale(1)}
+.ci:has(input:checked){background:var(--teal-3);border-color:var(--teal)}
+.ci h4{font-size:1.25rem;margin-bottom:4px}
+.ci p{margin:0;color:var(--ink-soft);font-size:.97rem}
+.ci small{display:block;margin-top:8px;font-weight:600;color:var(--teal-2);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.progress-line{margin-top:18px;font-size:.9rem;color:var(--ink-soft);display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden;max-width:260px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal-2),var(--amber));transition:width .35s}
+
+/* conclusion */
+.concl{text-align:center;background:radial-gradient(1000px 500px at 50% 0,#14504d 0,var(--night) 70%);color:#fff}
+.concl h2{margin-inline:auto;max-width:18ch;color:#fff}
+.concl .lead{margin-inline:auto;color:#c3d8d5}
+blockquote{margin:44px auto 0;max-width:820px;font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.35;font-weight:500;position:relative;padding-top:34px}
+blockquote::before{content:"“";position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-size:6rem;color:var(--amber);line-height:1}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:48px auto 0;max-width:900px;text-align:left}
+.trust div{padding:20px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font-size:.95rem;color:#d6e6e3}
+.trust b{display:block;color:var(--amber);font-family:var(--serif);font-size:1.1rem;margin-bottom:4px}
+footer{background:#071b1c;color:#8fb0ac;text-align:center;padding:28px 0;font-size:.88rem}
+
+/* assessment */
+.btn{border:0;cursor:pointer;font-family:inherit}
+.btn.outline{background:transparent;border:1.5px solid var(--teal);color:var(--teal)}
+.btn.outline:hover{background:var(--teal-3)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin-bottom:18px;box-shadow:var(--shadow)}
+.qhead{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.qnum{font-family:var(--serif);font-weight:800;color:var(--teal);font-size:1.05rem}
+.qtag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:var(--teal-3);color:var(--teal)}
+.qtext{font-family:var(--serif);font-size:1.3rem;line-height:1.35;margin:0 0 16px;font-weight:600}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;margin-bottom:10px;cursor:pointer;transition:.2s;font-size:.98rem;line-height:1.5}
+.opt:hover{border-color:var(--teal-2);background:#f6fbfa}
+.opt input{appearance:none;flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--teal-2);margin:1px 0 0;display:grid;place-items:center;background:#fff;cursor:pointer}
+.opt input::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--teal);transform:scale(0);transition:.15s}
+.opt input:checked::after{transform:scale(1)}
+.opt:has(input:checked){border-color:var(--teal);background:var(--teal-3)}
+.qcard.locked .opt{cursor:default}
+.qcard.locked .opt:hover{background:inherit;border-color:inherit}
+.qcard.locked .opt:has(input:checked){background:var(--teal-3);border-color:var(--teal)}
+.qcard.locked .opt.correct{border-color:#2e9d62;background:#e3f6ea}
+.qcard.locked .opt.wrong{border-color:var(--coral);background:#fbe9e4}
+.opt .mark{margin-left:auto;font-weight:700;font-size:.8rem;white-space:nowrap;padding-left:10px}
+.opt.correct .mark{color:#1f7a49}
+.opt.wrong .mark{color:var(--coral)}
+.qcard.missing{outline:3px solid var(--coral);outline-offset:2px}
+.fb{margin-top:14px;padding:16px 18px;border-radius:14px;background:var(--amber-2);border-left:5px solid var(--amber);font-size:.95rem;color:#4a2d09;line-height:1.6}
+.fb b{color:#2a1700}
+.qactions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:26px}
+#qmsg{font-weight:600;color:var(--coral)}
+.result{margin-top:34px;background:var(--night);color:#fff;border-radius:28px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;box-shadow:var(--shadow)}
+.ring{width:176px;height:176px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),rgba(255,255,255,.14) 0);display:grid;place-items:center}
+.ring div{width:140px;height:140px;border-radius:50%;background:var(--night);display:grid;place-items:center;text-align:center;font-family:var(--serif);font-size:2.5rem;font-weight:800;line-height:1;padding-top:6px}
+.ring small{display:block;font-family:var(--sans);font-size:.75rem;font-weight:500;color:#9fc0bc;margin-top:6px}
+.result h3{font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin-bottom:8px}
+.result p{color:#c3d8d5;margin:0 0 14px}
+.bk{display:grid;grid-template-columns:190px 1fr 48px;gap:12px;align-items:center;font-size:.88rem;margin:8px 0;color:#dbeae8}
+.bk .tr{height:8px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden}
+.bk .tr i{display:block;height:100%;background:var(--amber);border-radius:99px}
+.rbtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.result .btn.outline{border-color:rgba(255,255,255,.5);color:#fff}
+.result .btn.outline:hover{background:rgba(255,255,255,.12)}
+.certbox{grid-column:1/-1;padding:24px;border-radius:20px;background:linear-gradient(135deg,rgba(232,146,58,.18),rgba(255,255,255,.06));border:1px solid rgba(232,146,58,.5)}
+.certbox h4{font-size:1.4rem;color:#fff;margin-bottom:4px}
+.certbox p{margin-bottom:14px}
+.certrow{display:flex;gap:12px;flex-wrap:wrap}
+.certrow input{flex:1;min-width:220px;padding:13px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:1rem;outline:none}
+.certrow input::placeholder{color:#9fc0bc}
+.certrow input:focus{border-color:var(--amber)}
+#cert{display:none}
+@media(max-width:760px){.result{grid-template-columns:1fr;justify-items:center;text-align:center}.bk{grid-template-columns:1fr 44px;text-align:left}.bk span:first-child{grid-column:1/-1}.certbox{text-align:left}}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body.print-cert>*:not(#cert){display:none!important}
+  body.print-cert #cert{display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100vh;border:10px double var(--teal);margin:0;padding:40px;background:#fbf8f2;font-family:var(--serif)}
+  body.print-cert #cert h1{font-size:3rem;color:var(--teal)}
+  body.print-cert #cert .nm{font-size:3rem;font-style:italic;border-bottom:2px solid var(--amber);padding:0 40px;margin:18px 0}
+}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g3,.triad,.lens,.trust{grid-template-columns:1fr}
+  .steps,.flow{grid-template-columns:repeat(2,1fr);gap:14px}
+  .step,.step:first-child,.step:last-child{border-radius:var(--radius);margin-left:0}
+  .flow>div:not(:last-child)::after{display:none}
+  .flow{margin-top:44px}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  nav.top ul{display:none}
+  .g2,.g4,.steps,.flow,.compare{grid-template-columns:1fr}
+  .stats .wrap{grid-template-columns:1fr}
+  .stat{border-left:0;border-top:1px solid rgba(255,255,255,.12)}
+  .stat:first-child{border-top:0}
+  .hero-art{aspect-ratio:4/3}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media print{nav.top,#progress,.btns{display:none}.rv{opacity:1;transform:none}section{padding:30px 0}.card,.step,.ci{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>Leading from the Middle</a>
+    <ul>
+      <li><a class="l" href="#intro">Overview</a></li>
+      <li><a class="l" href="#strategy">Strategy</a></li>
+      <li><a class="l" href="#stakeholders">Stakeholders</a></li>
+      <li><a class="l" href="#dynamics">Dynamics</a></li>
+      <li><a class="l" href="#apply">In practice</a></li>
+      <li><a class="l" href="#discipline">Checklist</a></li>
+      <li><a class="l" href="#assessment">Assessment</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-art">
+    <!-- Landscape illustration: the middle ridge connects the summit (strategy) and the valley (execution) -->
+    <svg viewBox="0 0 1680 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Layered landscape of ridges at dawn with a bridge linking a high summit to the valley below">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0b2a2b"/>
+          <stop offset=".45" stop-color="#1c5b59"/>
+          <stop offset=".75" stop-color="#e8923a"/>
+          <stop offset="1" stop-color="#fbd9a6"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#fff3d6"/>
+          <stop offset=".35" stop-color="#ffc972" stop-opacity=".9"/>
+          <stop offset="1" stop-color="#ffc972" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7e79"/><stop offset="1" stop-color="#5aa59d"/></linearGradient>
+        <linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b625e"/><stop offset="1" stop-color="#2f8079"/></linearGradient>
+        <linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f4a48"/><stop offset="1" stop-color="#1b6360"/></linearGradient>
+        <linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#082e30"/><stop offset="1" stop-color="#0b3d3d"/></linearGradient>
+        <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbd9a6" stop-opacity="0"/><stop offset="1" stop-color="#fbd9a6" stop-opacity=".45"/></linearGradient>
+      </defs>
+      <rect width="1680" height="720" fill="url(#sky)"/>
+      <!-- stars -->
+      <g fill="#fff" opacity=".7">
+        <circle cx="180" cy="70" r="2"/><circle cx="360" cy="140" r="1.5"/><circle cx="520" cy="60" r="2"/>
+        <circle cx="780" cy="110" r="1.5"/><circle cx="1010" cy="50" r="2"/><circle cx="1240" cy="130" r="1.5"/>
+        <circle cx="1460" cy="80" r="2"/><circle cx="1600" cy="170" r="1.5"/><circle cx="90" cy="200" r="1.5"/>
+      </g>
+      <circle cx="1130" cy="430" r="230" fill="url(#sun)"/>
+      <circle cx="1130" cy="430" r="62" fill="#fff0cf"/>
+      <!-- far ridge -->
+      <path d="M0 450 L130 380 L250 430 L420 310 L560 400 L700 340 L860 430 L1010 350 L1180 440 L1340 330 L1500 420 L1680 360 L1680 720 L0 720Z" fill="url(#r1)" opacity=".9"/>
+      <rect y="380" width="1680" height="160" fill="url(#mist)"/>
+      <!-- summit ridge with flag -->
+      <path d="M0 520 L160 440 L300 500 L470 380 L640 490 L790 430 L960 520 L1120 470 L1300 540 L1480 450 L1680 520 L1680 720 L0 720Z" fill="url(#r2)"/>
+      <g transform="translate(470 380)">
+        <line x1="0" y1="0" x2="0" y2="-62" stroke="#fff0cf" stroke-width="3"/>
+        <path d="M0 -62 L38 -50 L0 -38Z" fill="#e8923a"/>
+      </g>
+      <!-- middle ridge: the bridge between summit and valley -->
+      <path d="M0 590 L200 540 L380 580 L600 520 L820 585 L1040 540 L1260 590 L1480 545 L1680 585 L1680 720 L0 720Z" fill="url(#r3)"/>
+      <!-- bridge -->
+      <g stroke="#ffd79a" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M600 520 Q 710 430 820 585" opacity=".0"/>
+        <path d="M470 392 Q 640 470 820 585" stroke-dasharray="2 12" opacity=".9"/>
+        <path d="M470 392 Q 330 470 200 540" stroke-dasharray="2 12" opacity=".9"/>
+        <path d="M820 585 Q 1000 520 1130 470" stroke-dasharray="2 12" opacity=".9"/>
+      </g>
+      <g fill="#ffd79a">
+        <circle cx="470" cy="392" r="7"/><circle cx="820" cy="585" r="7"/><circle cx="200" cy="540" r="7"/><circle cx="1130" cy="470" r="7"/>
+      </g>
+      <!-- foreground -->
+      <path d="M0 650 L240 620 L520 660 L860 625 L1180 665 L1440 630 L1680 655 L1680 720 L0 720Z" fill="url(#r4)"/>
+      <!-- trees -->
+      <g fill="#05201f">
+        <path d="M90 668 l22 -64 l22 64z"/><path d="M130 672 l18 -52 l18 52z"/><path d="M1500 662 l24 -70 l24 70z"/><path d="M1550 668 l18 -50 l18 50z"/><path d="M1420 668 l16 -46 l16 46z"/>
+      </g>
+      <!-- traveller on middle ridge -->
+      <g transform="translate(820 585)" fill="#fff0cf"><circle cx="0" cy="-26" r="6"/><path d="M-6 -18 h12 l3 20 h-18z"/></g>
+    </svg>
+  </div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <span class="eyebrow">A practical field guide for managers</span>
+      <h1>Leading <em>from</em> the Middle</h1>
+      <p class="sub">How mid-level managers turn strategy into results by connecting people, systems and decisions across the organisation.</p>
+      <div class="btns">
+        <a class="btn primary" href="#intro">Start learning ↓</a>
+        <a class="btn ghost" href="#discipline">Jump to the checklist</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>3</b><span>core capabilities that define effective middle leadership</span></div>
+    <div class="stat"><b>4</b><span>step approach to escalating with confidence</span></div>
+    <div class="stat"><b>~15</b><span>minute read, built for a high-level grasp</span></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker">Overview</div>
+      <h2>The most demanding seat in the organisation</h2>
+      <p class="lead">Mid-level managers translate senior strategy into operational results while staying close enough to the front line to understand how work really gets done. In a growing organisation that seat is more complex than ever.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card rv">
+        <div class="icon">🔗</div>
+        <h3>Problems rarely respect boundaries</h3>
+        <p>When a critical resource runs low, the cause could be failures, delays, uneven distribution, slow repairs, poor visibility or demand outpacing capacity. No single department owns the whole answer, so solving it takes judgement, alignment and an understanding of how decisions move.</p>
+      </div>
+      <div class="card rv">
+        <div class="icon a">🧭</div>
+        <h3>The role is to connect, not just supervise</h3>
+        <p>A mid-level manager links strategy, people, technical systems and business performance. Three closely related capabilities make that possible.</p>
+      </div>
+    </div>
+
+    <div class="grid g3">
+      <div class="card pillar rv" data-n="1">
+        <div class="icon">🎯</div>
+        <h3>Strategic leadership</h3>
+        <p>Connect daily work to business outcomes and direct effort towards what matters most.</p>
+        <a href="#strategy">Explore →</a>
+      </div>
+      <div class="card pillar rv" data-n="2">
+        <div class="icon a">🤝</div>
+        <h3>Stakeholder management</h3>
+        <p>Align people with different pressures around shared outcomes.</p>
+        <a href="#stakeholders">Explore →</a>
+      </div>
+      <div class="card pillar rv" data-n="3">
+        <div class="icon c">🗺️</div>
+        <h3>Organisational awareness</h3>
+        <p>Understand how decisions really happen and navigate authority, priorities and dependencies.</p>
+        <a href="#dynamics">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy" class="alt">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker"><span class="n">1</span> Strategic leadership</div>
+      <h2>Connecting daily work to business outcomes</h2>
+      <p class="lead">Strategic leadership is understanding what the organisation is trying to achieve, identifying the factors that matter most and directing effort towards measurable results. You may not set the strategy, but you make it operational.</p>
+    </div>
+
+    <h3 class="sub rv">Think beyond departmental boundaries</h3>
+    <p class="rv" style="max-width:70ch;color:var(--ink-soft)">Every team is measured on something different, yet the business needs one thing: the whole system working. A department can hit its own targets while the organisation still underperforms. A workshop may complete many repairs, but if the repaired items never reach the right locations, availability stays low.</p>
+    <ol class="qs rv">
+      <li>What business outcome are we trying to improve?</li>
+      <li>What is preventing that outcome?</li>
+      <li>Which departments influence the result?</li>
+      <li>What trade-offs might our proposed solution create elsewhere?</li>
+      <li>How will we know whether the intervention worked?</li>
+    </ol>
+    <div class="callout rv"><strong>The shift</strong><p>Move the focus from departmental activity to overall system performance.</p></div>
+
+    <h3 class="sub rv">Understand the economics behind technical decisions</h3>
+    <p class="rv" style="max-width:70ch;color:var(--ink-soft)">Technical choices have financial consequences: asset wear drives replacement spend, poor coordination creates downtime and needless movement, and inventory is a balancing act between tied-up capital and prolonged repairs. You do not need to be an analyst, but you should read the link between performance and cost.</p>
+    <div class="grid g4" style="margin-top:28px">
+      <div class="measure rv"><b></b>Availability of key assets</div>
+      <div class="measure rv"><b></b>Downtime</div>
+      <div class="measure rv"><b></b>Mean time to repair and turnaround</div>
+      <div class="measure rv"><b></b>Repeat failures and first-time fix rate</div>
+      <div class="measure rv"><b></b>Capacity utilisation and related delays</div>
+      <div class="measure rv"><b></b>Maintenance cost per unit</div>
+      <div class="measure rv"><b></b>Asset life, wear and replacement trends</div>
+      <div class="measure rv"><b></b>Parts availability and inventory exposure</div>
+    </div>
+    <div class="callout rv"><strong>Read indicators together</strong><p>Cutting repair spend is not an improvement if it drives up repeat failures or downtime.</p></div>
+
+    <h3 class="sub rv">Prioritise using evidence</h3>
+    <p class="rv" style="max-width:70ch;color:var(--ink-soft)">Scaling organisations generate many competing demands at once. Treating everything as urgent leads to reactive management. Weigh each issue against these factors:</p>
+    <div class="chips rv">
+      <span class="chip hot">Safety</span><span class="chip hot">Regulatory compliance</span>
+      <span class="chip t">Impact on core operations</span><span class="chip t">Financial exposure</span>
+      <span class="chip t">Operational urgency</span><span class="chip t">Downstream processes affected</span>
+    </div>
+    <div class="compare">
+      <div class="good rv"><h4>Usually deserves priority</h4><ul><li>A safety-critical fault</li><li>A recurring issue affecting several sites</li><li>Work that unblocks other teams</li></ul></div>
+      <div class="bad rv"><h4>Should not crowd out the important</h4><ul><li>A routine administrative improvement</li><li>An isolated low-impact incident</li><li>Emergencies that displace non-urgent but vital work</li></ul></div>
+    </div>
+    <p class="rv" style="margin-top:22px;color:var(--ink-soft)">Make priorities explicit, explain your reasoning and protect important but non-urgent work from being displaced by constant emergencies.</p>
+  </div>
+</section>
+
+<!-- STAKEHOLDERS -->
+<section id="stakeholders">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker"><span class="n">2</span> Stakeholder management</div>
+      <h2>Getting different teams to work towards the same outcome</h2>
+      <p class="lead">Stakeholder management is understanding the priorities, responsibilities and constraints of everyone whose work or decisions affect your objectives. It does not mean pleasing everyone. It means aligning people around shared outcomes while managing legitimate differences.</p>
+    </div>
+
+    <div class="grid g4">
+      <div class="card rv"><div class="icon">💰</div><h3>Finance</h3><p>Cost control and discipline.</p></div>
+      <div class="card rv"><div class="icon a">⚙️</div><h3>Engineering</h3><p>Technical reliability and standards.</p></div>
+      <div class="card rv"><div class="icon c">🚚</div><h3>Operations</h3><p>Availability and day-to-day delivery.</p></div>
+      <div class="card rv"><div class="icon">📦</div><h3>Procurement</h3><p>Supplier lead times and purchasing procedures.</p></div>
+    </div>
+    <p class="rv" style="margin-top:20px;color:var(--ink-soft)">Same company goals, different immediate pressures. Your job is to see all of them.</p>
+
+    <h3 class="sub rv">Manage upwards</h3>
+    <p class="rv" style="max-width:70ch;color:var(--ink-soft)">Senior leaders need visibility, reliable information, clear recommendations and confidence that risks are under control. Never present a problem without its business impact and a proposed way forward. When escalating, communicate four things:</p>
+    <div class="steps rv">
+      <div class="step"><span class="tag">Step 1</span><h4>Situation</h4><p>What happened, and what evidence supports it?</p></div>
+      <div class="step"><span class="tag">Step 2</span><h4>Impact</h4><p>How does it affect availability, cost, safety, customers or growth?</p></div>
+      <div class="step"><span class="tag">Step 3</span><h4>Proposed action</h4><p>What do you recommend, and why?</p></div>
+      <div class="step"><span class="tag">Step 4</span><h4>Decision required</h4><p>What approval, resource or intervention do you need?</p></div>
+    </div>
+    <div class="compare">
+      <div class="bad rv"><h4>Instead of…</h4><ul><li>“Items are piling up at the workshop.”</li></ul></div>
+      <div class="good rv"><h4>Say…</h4><ul><li>How many await repair and the main failure categories</li><li>The effect on service availability</li><li>The expected recovery timeline</li><li>The resources or decisions needed</li></ul></div>
+    </div>
+    <div class="callout rv"><strong>Bad news travels best early</strong><p>Delayed escalation can turn a manageable problem into a major disruption. Be concise, factual and solution-oriented, and make clear what is information, what you can do independently and what needs their authority.</p></div>
+
+    <h3 class="sub rv">Work laterally with fellow managers</h3>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card rv">
+        <h3 style="margin-top:0">Build the relationship before the crisis</h3>
+        <p>Many problems cross departments and no single manager controls the whole process. Learn your peers’ targets and constraints, share useful information and raise dependencies before they become urgent.</p>
+      </div>
+      <div class="card rv">
+        <h3 style="margin-top:0">Debate the process, not the person</h3>
+        <p>Rather than “they are delaying my work”, find where the delay occurs, why, who owns the next step and what change would improve the whole process. Do not promise dates on another team’s behalf, and treat shared responsibilities as explicit commitments with owners and deadlines, not favours.</p>
+      </div>
+    </div>
+
+    <h3 class="sub rv">Lead technical teams with clarity and respect</h3>
+    <p class="rv" style="max-width:70ch;color:var(--ink-soft)">Specialists often hold detailed practical knowledge that managers lack. Respect it, while holding firm on standards and results. Explain why a task matters, and make it safe to report recurring faults, unsafe conditions, missing tools, poor-quality parts and unrealistic deadlines. Before blaming people, diagnose the real problem:</p>
+    <div class="grid g4" style="margin-top:26px">
+      <div class="diag rv" style="--c:var(--teal)"><h4>Skills gap</h4><p>People lack the know-how.</p><div class="r">→ Train and coach</div></div>
+      <div class="diag rv" style="--c:var(--amber)"><h4>Resource constraint</h4><p>Tools, parts or time are missing.</p><div class="r">→ Remove the blocker</div></div>
+      <div class="diag rv" style="--c:var(--teal-2)"><h4>Unclear procedure</h4><p>The way of working is ambiguous.</p><div class="r">→ Define the standard</div></div>
+      <div class="diag rv" style="--c:var(--coral)"><h4>Performance problem</h4><p>Expectations are clear and resourced, yet unmet.</p><div class="r">→ Give direct feedback</div></div>
+    </div>
+    <p class="rv" style="margin-top:22px;color:var(--ink-soft)">Low output? Check workload, equipment, parts, complexity and quality requirements before concluding the team is underperforming. Set clear expectations for safety, workmanship, documentation and escalation; give constructive feedback; recognise good work; and make sure frontline observations reach those who can act.</p>
+  </div>
+</section>
+
+<!-- DYNAMICS -->
+<section id="dynamics" class="dark">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker"><span class="n">3</span> Organisational dynamics</div>
+      <h2>Understanding how decisions really happen</h2>
+      <p class="lead">Beyond the org chart sit informal influence, competing priorities, trust, reputation and unwritten expectations. In a business with a head office and regional offices, some decisions are made locally while others need approval from elsewhere, and visibility into local realities varies. Understand all of this without being consumed by politics.</p>
+    </div>
+
+    <h3 class="sub rv" style="color:#fff">Three ideas to keep apart</h3>
+    <div class="triad">
+      <div class="t rv"><h3>Accountability</h3><span class="q">What outcome must I deliver?</span><p>The result you are expected to answer for.</p></div>
+      <div class="t rv"><h3>Authority</h3><span class="q">What can I decide and control?</span><p>The decisions and resources formally in your hands.</p></div>
+      <div class="t rv"><h3>Influence</h3><span class="q">Who must enable the outcome?</span><p>People whose support you need even though they do not report to you.</p></div>
+    </div>
+    <div class="gap-note rv"><strong style="color:var(--amber)">When responsibility exceeds authority:</strong> clarify decision rights and dependencies early. Agree what you can decide, what needs consultation, what needs approval and how unresolved issues escalate. Do not silently absorb outcomes that depend on others, but never hide behind limited authority either. Act on what you can, build support, and escalate the specific decisions that remain.</div>
+
+    <h3 class="sub rv" style="color:#fff">Bridge head office and local reality</h3>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="triad" style="grid-template-columns:1fr;margin:0"><div class="t rv"><h3>Head office</h3><p>Sets strategic direction, technical standards, budgets and growth priorities. Needs accurate information about what is happening locally.</p></div></div>
+      <div class="triad" style="grid-template-columns:1fr;margin:0"><div class="t rv"><h3>Local teams</h3><p>Execute and respond to local conditions. Need clarity about strategic expectations and approval requirements.</p></div></div>
+    </div>
+    <p class="rv" style="margin-top:24px;max-width:72ch">When an instruction meets a local constraint, do not frame it as “head office versus us”. Explain the operational reality, bring evidence and propose practical options. If a delayed delivery of imported inputs threatens an assembly target, share the affected stages, stock position, lead times, consequences and alternatives, so leaders decide early rather than hearing about missed targets late. Respect reporting lines, but never let them block necessary coordination. Where reporting lines overlap, agree priorities and clarify who has the final say.</p>
+
+    <h3 class="sub rv" style="color:#fff">Build credibility through consistency</h3>
+    <div class="chips rv">
+      <span class="chip">Deliver on commitments</span><span class="chip">Share accurate information</span><span class="chip">Acknowledge mistakes</span><span class="chip">Give credit fairly</span><span class="chip">Avoid public blame</span>
+    </div>
+    <div class="callout rv"><strong>Separate facts from interpretations</strong><p>A missed deadline is observable. Deliberate obstruction is an assumption. Investigate the cause before drawing conclusions, and address disagreements directly with the people involved. Organisational awareness is not manipulation. It is understanding context, anticipating consequences and working constructively within the system with integrity.</p></div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section id="apply" class="alt">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker"><span class="n">4</span> In practice</div>
+      <h2>One operational challenge, three lenses</h2>
+      <p class="lead">Imagine availability of a critical resource is declining across a large network. The reflex is to tell one team to produce more. A stronger manager examines the entire cycle the resource moves through.</p>
+    </div>
+
+    <div class="lens">
+      <div class="card rv"><div class="icon">🎯</div><h3>Strategic leadership</h3><p>Frames the objective: increase usable availability while controlling costs and protecting asset life.</p></div>
+      <div class="card rv"><div class="icon a">🤝</div><h3>Stakeholder management</h3><p>Brings technicians, operations, logistics, software and engineering together to find where the resource leaks out of productive service.</p></div>
+      <div class="card rv"><div class="icon c">🗺️</div><h3>Organisational awareness</h3><p>Identifies who controls priorities, repair capacity, movements, data and spending approvals, and which actions need sign-off.</p></div>
+    </div>
+
+    <h3 class="sub rv">Then run the loop</h3>
+    <div class="flow">
+      <div class="rv"><h4>Baseline</h4><p>Establish where things stand today.</p></div>
+      <div class="rv"><h4>Bottlenecks</h4><p>Identify the principal constraints.</p></div>
+      <div class="rv"><h4>Owners</h4><p>Assign clear responsibilities.</p></div>
+      <div class="rv"><h4>Review</h4><p>Track progress against agreed measures.</p></div>
+    </div>
+    <div class="callout rv"><strong>It works everywhere</strong><p>The same approach applies to assembly and delivery programmes. Output depends not only on team productivity but on input availability, documentation, quality assurance, tooling, training, system configuration and coordination across procurement, engineering and operations. The manager’s value is making those dependencies visible and keeping every function pulling towards one delivery target.</p></div>
+  </div>
+</section>
+
+<!-- DISCIPLINE -->
+<section id="discipline">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker">5 · A practical discipline</div>
+      <h2>Four questions to carry into every meeting</h2>
+      <p class="lead">Use these when planning work, attending management meetings or resolving cross-functional problems. Tick them off as you go.</p>
+    </div>
+
+    <div class="check" id="check">
+      <label class="ci rv"><input type="checkbox"><div><h4>Business alignment</h4><p>What business outcome does this task support? Is the team improving availability, safety, reliability, cost or readiness for growth?</p><small>Strategic leadership</small></div></label>
+      <label class="ci rv"><input type="checkbox"><div><h4>Stakeholder alignment</h4><p>Who needs to contribute, approve or be informed? Have responsibilities and deadlines been agreed?</p><small>Stakeholder management</small></div></label>
+      <label class="ci rv"><input type="checkbox"><div><h4>Organisational awareness</h4><p>Do I have the authority and resources to deliver? If not, which specific decision or dependency must be resolved?</p><small>Organisational dynamics</small></div></label>
+      <label class="ci rv"><input type="checkbox"><div><h4>Execution and accountability</h4><p>What does the evidence show? Who owns the next action, when is it due, and how will we measure improvement?</p><small>All three, combined</small></div></label>
+    </div>
+    <div class="progress-line"><div class="bar"><i id="bar"></i></div><span id="count">0 of 4 considered</span></div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="concl">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker" style="justify-content:center;color:var(--amber)">Conclusion</div>
+      <h2>Become the link between strategy and execution</h2>
+      <p class="lead">You do not need the highest technical authority or to make every big decision. Your effectiveness comes from understanding the operating system, asking the right questions, building productive relationships and making sure responsibilities become results.</p>
+    </div>
+    <div class="trust rv">
+      <div><b>Trusted by leaders</b>for sound judgement.</div>
+      <div><b>Trusted by peers</b>for dependable collaboration.</div>
+      <div><b>Trusted by teams</b>for fair, informed leadership.</div>
+    </div>
+    <blockquote class="rv">The defining skill of a mid-level manager is turning complex, cross-functional challenges into clear priorities, coordinated action and measurable results.</blockquote>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section id="assessment" class="alt">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker">Assessment</div>
+      <h2>Test your understanding</h2>
+      <p class="lead">Ten multiple-choice questions across the three capabilities. Score 80% or more to earn your certificate. If you miss a question, you will see the right answer with a short explanation, and you can retake the assessment as often as you like. Answer order reshuffles each attempt.</p>
+    </div>
+    <form id="quiz" novalidate style="margin-top:40px"></form>
+    <div class="qactions" id="qactions">
+      <button type="button" class="btn primary" id="submitQ">Submit answers</button>
+      <span id="qmsg" role="alert"></span>
+    </div>
+    <div id="result" hidden></div>
+  </div>
+</section>
+
+<div id="cert" aria-hidden="true">
+  <p style="letter-spacing:.3em;font-family:sans-serif;font-size:.9rem">LEADING FROM THE MIDDLE</p>
+  <h1>Certificate of Achievement</h1>
+  <p>This certifies that</p>
+  <div class="nm" id="certName"></div>
+  <p style="max-width:720px">has demonstrated a high-level understanding of Strategic Leadership, Stakeholder Management and Organisational Awareness.</p>
+  <p id="certMeta" style="font-family:sans-serif;font-size:.9rem;margin-top:24px"></p>
+</div>
+
+<footer><div class="wrap">Leading from the Middle · A leadership capacity-building resource</div></footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=Math.min(100,Math.max(0,p))+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+  var links=[].slice.call(document.querySelectorAll('nav.top a.l'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var so=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('active');});
+        var a=map[e.target.id];if(a)a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){var s=document.getElementById(id);if(s)so.observe(s);});
+
+  var boxes=[].slice.call(document.querySelectorAll('#check input'));
+  var cnt=document.getElementById('count'),b=document.getElementById('bar');
+  function upd(){
+    var n=boxes.filter(function(x){return x.checked;}).length;
+    cnt.textContent=n+' of '+boxes.length+' considered';
+    b.style.width=(n/boxes.length*100)+'%';
+  }
+  boxes.forEach(function(x){x.addEventListener('change',upd);});
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script>
+(function(){
+  var PASS=80;
+  var A1='Strategic leadership',A2='Stakeholder management',A3='Organisational awareness';
+  var QS=[
+    {a:A1,q:'A workshop completes many repairs, yet overall availability of the key resource stays low. What does this most likely show?',
+     o:['A department can hit its own targets while the whole system still underperforms.','The workshop team is underperforming and needs tighter targets.','Availability is not a useful measure and should be dropped.','Repairs should be paused until demand stabilises.'],c:0,
+     e:'Local activity is not the same as system performance. Repaired items may not reach the places that need them, so look at the whole flow.'},
+    {a:A1,q:'Repair spend falls sharply, but repeat failures and downtime rise. How should this be read?',
+     o:['A clear success, because costs are lower.','Not necessarily an improvement. Indicators must be interpreted together.','A reporting error that can be ignored.','Proof that repairs are no longer needed.'],c:1,
+     e:'Cutting cost is not progress if it drives up repeat failures or downtime. Read cost, quality and availability measures side by side.'},
+    {a:A1,q:'Which of these should normally take precedence?',
+     o:['A routine administrative improvement.','A safety-critical electrical fault.','An isolated, low-impact incident.','A request that is simply the newest in the queue.'],c:1,
+     e:'Safety and compliance come first, followed by impact on core operations, financial exposure and downstream effects.'},
+    {a:A1,q:'Important but non-urgent work keeps getting displaced by emergencies. What should a strategic manager do?',
+     o:['Accept it as the cost of a growing organisation.','Treat every item as equally urgent.','Make priorities explicit, explain the reasoning and protect that work.','Hand it to another team without discussion.'],c:2,
+     e:'Without explicit, communicated priorities, the organisation drifts into reactive management and long-term work never gets done.'},
+    {a:A2,q:'When escalating an issue to senior leaders, which message is strongest?',
+     o:['"Things are piling up and it is getting bad."','"This is not my area, so someone else should fix it."','"We are struggling. Please advise."','"Here is the situation and evidence, the impact, my recommended action and the decision I need from you."'],c:3,
+     e:'Effective escalation covers four things: situation, impact, proposed action and the decision required. It also communicates bad news early.'},
+    {a:A2,q:'Another department is delaying your work. What is the most constructive approach?',
+     o:['Find where and why the delay occurs, who owns the next step and what would improve the process.','Tell colleagues that the other team is the problem.','Promise your own stakeholders a date on the other team\'s behalf.','Treat it as a favour and wait politely.'],c:0,
+     e:'Focus on the process and shared outcome, not personalities. Shared responsibilities need explicit commitments, owners and deadlines.'},
+    {a:A2,q:'Output from a technical team is lower than expected. What is the best first step?',
+     o:['Conclude that the team is underperforming.','Investigate workload, equipment, parts, complexity and quality requirements.','Increase the targets to motivate people.','Replace the team lead.'],c:1,
+     e:'Distinguish between a skills gap, a resource constraint, an unclear procedure and a performance problem. Each needs a different response.'},
+    {a:A3,q:'You are accountable for an outcome that depends on teams you do not manage. What should you do?',
+     o:['Quietly accept the risk and do your best.','Do nothing until your authority is increased.','Make dependencies visible, clarify decision rights, act on what you can and escalate specific decisions.','Take over the other teams\' decisions.'],c:2,
+     e:'Accountability, authority and influence often do not align. Be transparent about dependencies, but never use limited authority as a reason for inaction.'},
+    {a:A3,q:'A head-office instruction clashes with a local constraint. What is the most professional response?',
+     o:['Present it as head office versus the local team.','Ignore the instruction until it is repeated.','Comply silently and explain any failure afterwards.','Explain the operational reality, provide evidence and propose practical options.'],c:3,
+     e:'Give leaders what they need to decide early: affected stages, position, lead times, consequences and alternatives.'},
+    {a:A3,q:'A colleague misses a deadline. How should you treat the situation?',
+     o:['Investigate the cause. The missed deadline is a fact, but deliberate obstruction is only an assumption.','Assume deliberate obstruction and raise it with others informally.','Raise it publicly to set an example.','Say nothing and lower expectations of that colleague.'],c:0,
+     e:'Separate facts from interpretations, address issues directly and professionally, and build credibility through consistency.'}
+  ];
+  var form=document.getElementById('quiz'),res=document.getElementById('result'),
+      submitBtn=document.getElementById('submitQ'),msg=document.getElementById('qmsg'),
+      actions=document.getElementById('qactions');
+  var attempt=0,locked=false,view=[];
+
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+  function render(){
+    attempt++;locked=false;msg.textContent='';
+    res.hidden=true;res.innerHTML='';
+    actions.style.display='';submitBtn.disabled=false;
+    view=shuffle(QS.map(function(_,i){return i;}));
+    form.innerHTML=view.map(function(qi,n){
+      var q=QS[qi];
+      var opts=shuffle(q.o.map(function(_,i){return i;}));
+      return '<fieldset class="qcard" id="qc'+n+'" style="border:1px solid var(--line);min-inline-size:0">'+
+        '<div class="qhead"><span class="qnum">Question '+(n+1)+' of '+QS.length+'</span><span class="qtag">'+esc(q.a)+'</span></div>'+
+        '<p class="qtext">'+esc(q.q)+'</p>'+
+        opts.map(function(oi){
+          return '<label class="opt" data-o="'+oi+'"><input type="radio" name="q'+n+'" value="'+oi+'"><span>'+esc(q.o[oi])+'</span></label>';
+        }).join('')+'</fieldset>';
+    }).join('');
+    form.querySelectorAll('input').forEach(function(i){
+      i.addEventListener('change',function(){
+        i.closest('.qcard').classList.remove('missing');msg.textContent='';
+      });
+    });
+  }
+
+  function submit(){
+    if(locked)return;
+    var missing=[];
+    view.forEach(function(qi,n){
+      if(!form.querySelector('input[name=q'+n+']:checked'))missing.push(n);
+    });
+    form.querySelectorAll('.qcard').forEach(function(c){c.classList.remove('missing');});
+    if(missing.length){
+      missing.forEach(function(n){document.getElementById('qc'+n).classList.add('missing');});
+      msg.textContent='Please answer all questions. '+missing.length+' still to go.';
+      document.getElementById('qc'+missing[0]).scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    locked=true;submitBtn.disabled=true;actions.style.display='none';
+    var score=0,by={};by[A1]=[0,0];by[A2]=[0,0];by[A3]=[0,0];
+    view.forEach(function(qi,n){
+      var q=QS[qi],card=document.getElementById('qc'+n);
+      var chosen=+form.querySelector('input[name=q'+n+']:checked').value;
+      var ok=chosen===q.c;
+      by[q.a][1]++;if(ok){score++;by[q.a][0]++;}
+      card.classList.add('locked');
+      card.querySelectorAll('input').forEach(function(i){i.disabled=true;});
+      card.querySelectorAll('.opt').forEach(function(l){
+        var o=+l.getAttribute('data-o');
+        if(o===q.c){l.classList.add('correct');l.insertAdjacentHTML('beforeend','<span class="mark">'+(ok?'✓ Correct':'✓ Right answer')+'</span>');}
+        else if(o===chosen){l.classList.add('wrong');l.insertAdjacentHTML('beforeend','<span class="mark">✗ Your answer</span>');}
+      });
+      if(!ok){
+        card.insertAdjacentHTML('beforeend','<div class="fb"><b>Why:</b> '+esc(q.e)+'</div>');
+      }
+    });
+    showResult(score);
+  }
+
+  function showResult(score){
+    var total=QS.length,pct=Math.round(score/total*100),pass=pct>=PASS;
+    var bk=Object.keys(by0()).map(function(k){return k;});
+    var br='';
+    var tally=tallyBy();
+    Object.keys(tally).forEach(function(k){
+      var p=Math.round(tally[k][0]/tally[k][1]*100);
+      br+='<div class="bk"><span>'+esc(k)+'</span><div class="tr"><i style="width:'+p+'%"></i></div><span>'+tally[k][0]+'/'+tally[k][1]+'</span></div>';
+    });
+    var html='<div class="ring" style="--p:'+pct+';--c:'+(pass?'#4fd18b':'#e8923a')+'"><div><span>'+pct+'%<small>'+score+' of '+total+'</small></span></div></div>'+
+      '<div><h3>'+(pass?'You passed! 🎉':'Not quite there yet')+'</h3>'+
+      '<p>'+(pass
+        ?'Attempt '+attempt+'. You reached the '+PASS+'% pass mark. Review any explanations above, then claim your certificate below.'
+        :'Attempt '+attempt+'. You need '+PASS+'% to pass. Read the explanations on the questions you missed, then try again.')+'</p>'+br+
+      '<div class="rbtns"><button type="button" class="btn '+(pass?'outline':'primary')+'" id="retry">Retake assessment</button>'+
+      '<a class="btn outline" href="#strategy">Review the material</a></div></div>';
+    if(pass){
+      html+='<div class="certbox"><h4>Claim your certificate</h4><p>Enter your name exactly as you want it to appear. Your PDF certificate will confirm a high-level understanding of strategic leadership, stakeholder management and organisational awareness.</p>'+
+        '<div class="certrow"><input id="certNameIn" type="text" maxlength="60" placeholder="Your full name" autocomplete="name"><button type="button" class="btn primary" id="certBtn">Download PDF certificate</button></div>'+
+        '<p id="certErr" style="color:#ffb4a5;margin:10px 0 0"></p></div>';
+    }
+    res.innerHTML=html;res.hidden=false;
+    res.scrollIntoView({behavior:'smooth',block:'start'});
+    document.getElementById('retry').addEventListener('click',function(){
+      render();document.getElementById('assessment').scrollIntoView({behavior:'smooth'});
+    });
+    if(pass){
+      document.getElementById('certBtn').addEventListener('click',function(){
+        var n=document.getElementById('certNameIn').value.trim().replace(/\s+/g,' ');
+        var err=document.getElementById('certErr');
+        if(n.length<2){err.textContent='Please enter your name first.';return;}
+        err.textContent='';
+        makeCert(n,score,total,pct);
+      });
+    }
+  }
+  function by0(){var o={};o[A1]=1;o[A2]=1;o[A3]=1;return o;}
+  function tallyBy(){
+    var t={};t[A1]=[0,0];t[A2]=[0,0];t[A3]=[0,0];
+    view.forEach(function(qi,n){
+      var q=QS[qi];t[q.a][1]++;
+      if(+form.querySelector('input[name=q'+n+']:checked').value===q.c)t[q.a][0]++;
+    });return t;
+  }
+
+  function makeCert(name,score,total,pct){
+    var date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    var id='LFM-'+Date.now().toString(36).toUpperCase().slice(-6)+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
+    if(!(window.jspdf&&window.jspdf.jsPDF)){
+      document.getElementById('certName').textContent=name;
+      document.getElementById('certMeta').textContent='Score '+score+'/'+total+' ('+pct+'%) · '+date+' · ID '+id+'. Choose "Save as PDF" in the print dialog.';
+      document.body.classList.add('print-cert');
+      window.print();
+      setTimeout(function(){document.body.classList.remove('print-cert');},500);
+      return;
+    }
+    var doc=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
+    var W=297,H=210,cx=W/2;
+    doc.setFillColor(251,248,242);doc.rect(0,0,W,H,'F');
+    doc.setDrawColor(15,92,88);doc.setLineWidth(1.8);doc.rect(8,8,W-16,H-16);
+    doc.setDrawColor(232,146,58);doc.setLineWidth(.5);doc.rect(13,13,W-26,H-26);
+    doc.setFillColor(232,146,58);
+    [[13,13],[W-13,13],[13,H-13],[W-13,H-13]].forEach(function(p){doc.circle(p[0],p[1],2.2,'F');});
+    // top band
+    doc.setFillColor(15,92,88);doc.rect(13,13,W-26,10,'F');
+    doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(9);
+    doc.text('LEADING FROM THE MIDDLE',cx,19.6,{align:'center',charSpace:2.5});
+    // title
+    doc.setTextColor(15,92,88);doc.setFont('times','bold');doc.setFontSize(40);
+    doc.text('Certificate of Achievement',cx,50,{align:'center'});
+    doc.setDrawColor(232,146,58);doc.setLineWidth(.9);doc.line(cx-30,56,cx+30,56);
+    doc.setTextColor(68,84,79);doc.setFont('helvetica','normal');doc.setFontSize(12);
+    doc.text('This certifies that',cx,72,{align:'center'});
+    // name
+    doc.setTextColor(20,33,31);doc.setFont('times','italic');
+    var fs=44;doc.setFontSize(fs);
+    while(doc.getTextWidth(name)>220&&fs>16){fs-=2;doc.setFontSize(fs);}
+    doc.text(name,cx,94,{align:'center'});
+    doc.setDrawColor(232,146,58);doc.setLineWidth(.6);doc.line(cx-95,100,cx+95,100);
+    // body
+    doc.setTextColor(68,84,79);doc.setFont('helvetica','normal');doc.setFontSize(12.5);
+    var body=doc.splitTextToSize('has successfully completed the Leading from the Middle assessment and demonstrated a high-level understanding of the three core capabilities of effective mid-level leadership:',200);
+    doc.text(body,cx,114,{align:'center',lineHeightFactor:1.5});
+    // pills
+    var pills=['Strategic Leadership','Stakeholder Management','Organisational Awareness'];
+    var pw=70,gap=8,x0=(W-(pw*3+gap*2))/2,y=136;
+    pills.forEach(function(t,i){
+      var x=x0+i*(pw+gap);
+      doc.setFillColor(i===1?232:15,i===1?146:92,i===1?58:88);
+      doc.roundedRect(x,y,pw,14,3,3,'F');
+      doc.setTextColor(i===1?42:255,i===1?23:255,i===1?0:255);
+      doc.setFont('helvetica','bold');doc.setFontSize(11);
+      doc.text(t,x+pw/2,y+8.8,{align:'center'});
+    });
+    // footer columns
+    doc.setDrawColor(190,180,160);doc.setLineWidth(.3);
+    var cols=[[48,'Score',score+' / '+total+'  ('+pct+'%)'],[cx,'Date',date],[W-48,'Certificate ID',id]];
+    cols.forEach(function(c){
+      doc.setTextColor(20,33,31);doc.setFont('helvetica','bold');doc.setFontSize(12);
+      doc.text(c[2],c[0],172,{align:'center'});
+      doc.line(c[0]-34,175,c[0]+34,175);
+      doc.setTextColor(120,130,125);doc.setFont('helvetica','normal');doc.setFontSize(9);
+      doc.text(c[1].toUpperCase(),c[0],180,{align:'center',charSpace:1.2});
+    });
+    var safe=name.replace(/[^\w\-]+/g,'-').replace(/^-+|-+$/g,'')||'Certificate';
+    doc.save('Leading-from-the-Middle-Certificate-'+safe+'.pdf');
+  }
+
+  submitBtn.addEventListener('click',submit);
+  render();
+})();
+</script>
+</body>
+</html>
